@@ -3,10 +3,12 @@
   "version": "4.0.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.3.6",
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "clsx": "latest",
+    "graphql": "^15.4.0",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",

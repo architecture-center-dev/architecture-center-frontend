@@ -5,11 +5,9 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import PropTypes from 'prop-types';
+import Link from "next/link"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,52 +17,41 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
 }));
 
-export default function RecipeReviewCard() {
+export default function Solution({solution_id,name,description,date,image}) {
   const classes = useStyles();
   
   return (
     <Card className={classes.root}>
+      <Link href={`/solution/${solution_id}`}>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            CK
-          </Avatar>
-        }
-        
-        title="E-commerce checkout"
-        subheader="December 29, 2020"
+        title={name}
+        subheader={date}
       />
+      </Link>
       <CardMedia
         className={classes.media}
-        image="/checkout.jpg"
-        title="Paella dish"
+        image={image}
+        title={name}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-            Checkout solution to be used via API or embedding on the page via javascript
+            {description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
+      
       </CardActions>
       
     </Card>
   );
 }
+
+Solution.propTypes = {
+  solution_id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};

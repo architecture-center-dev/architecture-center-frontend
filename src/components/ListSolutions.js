@@ -9,32 +9,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ListSolutions() {
+export default function ListSolutions({solutions}) {
   const classes = useStyles();
-
+  console.log(solutions);
   return (
     <div className={classes.root}>
       <Grid container spacing={3} justify="center">
-        <Grid item >
-
-            <Solution />
-
-        </Grid>
-        <Grid item >
-
-            <Solution />
-
-        </Grid>
-        <Grid item >
-
-            <Solution />
-
-        </Grid>
-        <Grid item >
-
-            <Solution />
-
-        </Grid>
+        {
+          solutions.map(
+            ({solution_id,name,description,year_month}) => 
+            (<Grid key={solution_id} item ><Solution solution_id={solution_id} name={name} description={description} date={year_month} image="/checkout.jpg" /></Grid>)
+          )
+        }        
       </Grid>
     </div>
   );

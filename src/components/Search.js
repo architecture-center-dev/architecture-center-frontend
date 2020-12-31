@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   containerSearchBar:{
     marginTop: '20%',
-    marginBottom: '50px'
+    marginBottom: '50px',
   },
   searchBar:{
     backgroundColor: '#ffffff',
@@ -24,7 +24,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CenteredGrid() {
+
+const keyUpSearch = (event, loadingSolutions) => {
+
+  if(event.keyCode == 13){
+     loadingSolutions({
+      variables: {
+        search: event.target.value
+      },
+    }); 
+    
+  }
+}
+
+export default function Search({loadingSolutions}) {
   const classes = useStyles();
 
   return (
@@ -34,7 +47,14 @@ export default function CenteredGrid() {
 
             <div className={classes.containerSearchBar}>
                 <Typography variant={'h3'} align={'center'}>Architecture Center</Typography>
-                <TextField id="outlined-basic" label="Search by i.e 'kubernetes'" variant="outlined" fullWidth className={classes.searchBar}/>
+                <TextField 
+                id="outlined-basic" 
+                label="Search by i.e 'kubernetes'" 
+                variant="outlined" fullWidth 
+                className={classes.searchBar}
+                onKeyUp={
+                  (event) => keyUpSearch(event, loadingSolutions)
+                }/>
             </div>
 
         </Grid>

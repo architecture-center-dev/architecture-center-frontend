@@ -6,10 +6,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 import { Provider } from "react-redux";
 import configureStore from "../src/configureStore";
+import { ApolloProvider } from "@apollo/client";
+import { useApollo } from "../src/lib/apolloClient";
+
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
   const store = configureStore(true);
+  const apolloClient = useApollo(pageProps.initialApolloState);
+
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -28,9 +33,11 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+        <ApolloProvider client={apolloClient}>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </ApolloProvider>
         
       </ThemeProvider>
     </React.Fragment>

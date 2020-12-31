@@ -16,7 +16,6 @@ export default function Solution() {
     const router = useRouter()
     const { solution_id } = router.query
 
-    console.log("solution_id",solution_id);
 
   return (
     <>
