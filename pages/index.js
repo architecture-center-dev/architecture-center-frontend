@@ -23,7 +23,6 @@ const LIST_FILTERED_SOLUTIONS_QUERY = gql`
   }  
 `;
 
-
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),

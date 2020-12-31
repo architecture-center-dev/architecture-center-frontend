@@ -4,15 +4,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Divider } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
   },
   title: {
     fontSize: 14,
@@ -22,9 +18,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SolutionDetails() {
+export default function SolutionDetails({solution}) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.root} variant="outlined">
@@ -37,45 +32,49 @@ export default function SolutionDetails() {
           Name
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          E-commerce checkout
+          {solution.name}
         </Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Customer
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Santander Merchan PlatForm Solutions - SMPS
+          {solution.customer}
         </Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Project
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          E-commerce - Digital payments
+          {solution.project}
         </Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Market
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Financial
+          {solution.market}
         </Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Year / Month
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          2020/12
+          {solution.year_month}
         </Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Created by
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Robisson Oliveira
+          --
         </Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Description
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Solution used to embeddding via javascript on Ecommerce
+          {solution.description}
         </Typography>
       </CardContent>
     </Card>
   );
+}
+
+SolutionDetails.propTypes = {
+  solution: PropTypes.object.isRequired
 }

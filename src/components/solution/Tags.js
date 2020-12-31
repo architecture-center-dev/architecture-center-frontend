@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Chip, Divider } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   root: {
@@ -14,9 +15,8 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Tags() {
+export default function Tags({tags}) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.root} variant="outlined">
@@ -26,16 +26,12 @@ export default function Tags() {
         </Typography>
         <Divider />
         <br/>
-        <Chip className={classes.chip} size="small" label="Kubernetes" />
-        <Chip className={classes.chip} size="small" label="Azure" />
-        <Chip className={classes.chip} size="small" label="Microservices" />
-        <Chip className={classes.chip} size="small" label="nodejs" />
-        <Chip className={classes.chip} size="small" label="checkout" />
-        <Chip className={classes.chip} size="small" label="3ds" />
-        <Chip className={classes.chip} size="small" label="rest" />
-        <Chip className={classes.chip} size="small" label="api" />
-        <Chip className={classes.chip} size="small" label="Event driven architecture" />
+        {tags.map(tag => <Chip className={classes.chip} size="small" label={tag} />)}
       </CardContent>
     </Card>
   );
+}
+
+Tags.propTypes = {
+  tags: PropTypes.array.isRequired
 }

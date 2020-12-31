@@ -8,14 +8,37 @@ import SolutionDetails from '../../src/components/solution/SolutionDetails';
 import MainTabs from '../../src/components/solution/MainTabs';
 import Tags from '../../src/components/solution/Tags';
 import Teams from '../../src/components/solution/Teams';
-import References from '../../src/components/solution/References';
-import Diagrams from '../../src/components/solution/Diagrams';
+import { gql, useQuery } from '@apollo/client';
+
+const LIST_SOLUTION_BY_ID_QUERY = gql`
+  query($solution_id: String!) {
+    solutionById(solution_id: $solution_id){
+      solution_id
+      name
+      customer
+      project
+      market
+      year_month
+      description
+      tags
+      created_at
+      updated_at    
+    }
+  }  
+`;
 
 export default function Solution() {
 
-    const router = useRouter()
-    const { solution_id } = router.query
+  const router = useRouter()
+  const { solution_id } = router.query
 
+  const { loading, error, data } = useQuery(LIST_SOLUTION_BY_ID_QUERY, {
+    variables: { solution_id },
+  });
+  
+  const solution = data != undefined? data.solutionById : {};
+
+  const tags = solution.tags !== undefined ? solution.tags : [];
 
   return (
     <>
@@ -29,15 +52,11 @@ export default function Solution() {
             <MainTabs />
           </Grid> 
           <Grid item lg={3}>
-            <SolutionDetails />
+            <SolutionDetails solution={solution} />
             <br/>
             <Teams />
             <br/>
-            <Diagrams />
-            <br/>
-            <References />
-            <br/>
-            <Tags />
+            <Tags tags={tags} />
           </Grid> 
         </Grid> 
       </Container>

@@ -61,6 +61,8 @@ export default function FullWidthTabs() {
         >
           <Tab label="Big Picture" {...a11yProps(0)} />
           <Tab label="Architecture canvas" {...a11yProps(1)} />
+          <Tab label="Other Diagrams" {...a11yProps(2)} />
+          <Tab label="References" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       
@@ -69,6 +71,12 @@ export default function FullWidthTabs() {
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
             <Canvas />
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
+            Diagrams
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={theme.direction}>
+            References
         </TabPanel>
       
     </div>

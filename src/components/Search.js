@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { TextField, Typography } from '@material-ui/core';
 
@@ -8,11 +7,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     height:'100%'
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
   },
   containerSearchBar:{
     marginTop: '20%',
@@ -24,16 +18,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 const keyUpSearch = (event, loadingSolutions) => {
-
   if(event.keyCode == 13){
      loadingSolutions({
       variables: {
         search: event.target.value
       },
     }); 
-    
   }
 }
 
