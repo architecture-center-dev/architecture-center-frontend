@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Avatar, Chip, Divider } from '@material-ui/core';
+import PropTypes from "prop-types"
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Teams() {
+export default function Teams({members}) {
   const classes = useStyles();
 
   return (
@@ -25,12 +26,12 @@ export default function Teams() {
         </Typography>
         <Divider />
         <br/>
-        <Chip className={classes.chip} color="primary"  label="Robisson Oliveira" avatar={<Avatar>RC</Avatar>} />
-        <Chip className={classes.chip} color="primary"  label="Roberto Picanço" avatar={<Avatar>RP</Avatar>} />
-        <Chip className={classes.chip} color="primary"  label="Thiago Ferreira" avatar={<Avatar>RC</Avatar>} />
-        <Chip className={classes.chip} color="primary"  label="Gustavo Ott" avatar={<Avatar>GO</Avatar>} />
-        <Chip className={classes.chip} color="primary"  label="Leandro Angelim" avatar={<Avatar>LA</Avatar>} />
+        {members.map(member => <Chip key={member} className={classes.chip} color="primary"  label={member} />)}
       </CardContent>
     </Card>
   );
+}
+
+Teams.propTypes = {
+  members: PropTypes.array.isRequired
 }

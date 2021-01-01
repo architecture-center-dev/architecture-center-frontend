@@ -20,7 +20,9 @@ const LIST_SOLUTION_BY_ID_QUERY = gql`
       market
       year_month
       description
+      big_picture
       tags
+      team_members
       created_at
       updated_at    
     }
@@ -39,6 +41,8 @@ export default function Solution() {
   const solution = data != undefined? data.solutionById : {};
 
   const tags = solution.tags !== undefined ? solution.tags : [];
+  
+  const members = solution.team_members !== undefined ? solution.team_members : [];
 
   return (
     <>
@@ -49,12 +53,12 @@ export default function Solution() {
         <br/>
         <Grid container spacing={3}>
           <Grid item  lg={9}>
-            <MainTabs />
+            <MainTabs solution={solution} />
           </Grid> 
           <Grid item lg={3}>
             <SolutionDetails solution={solution} />
             <br/>
-            <Teams />
+            <Teams members={members} />
             <br/>
             <Tags tags={tags} />
           </Grid> 

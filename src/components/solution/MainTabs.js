@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Canvas from '../Canvas'
+import BigPicture from "./BigPicture"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -41,7 +42,7 @@ function a11yProps(index) {
   };
 }
 
-export default function FullWidthTabs() {
+export default function MainTabs({solution}) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -67,7 +68,7 @@ export default function FullWidthTabs() {
       </AppBar>
       
         <TabPanel value={value} index={0} dir={theme.direction}>
-            <img src="/checkout.jpg" style={{maxWidth: '100%'}} />
+            <BigPicture solution={solution} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
             <Canvas />
@@ -81,4 +82,8 @@ export default function FullWidthTabs() {
       
     </div>
   );
+}
+
+MainTabs.propTypes = {
+  solution: PropTypes.object.isRequired
 }
