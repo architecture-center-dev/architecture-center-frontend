@@ -1,12 +1,13 @@
 import { useMemo } from "react";
- import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { createUploadLink } from 'apollo-upload-client'
 
  let apolloClient;
 
  export function createApolloClient() {
    return new ApolloClient({
      ssrMode: typeof window === "undefined", // set to true for SSR
-     link: new HttpLink({
+     link: createUploadLink({
        uri: "http://localhost/graphql",
      }),
      cache: new InMemoryCache(),
