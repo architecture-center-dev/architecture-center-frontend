@@ -15,7 +15,15 @@ const useStyles = makeStyles((theme) => ({
 
 const SINGLE_UPLOAD = gql`
   mutation($file: Upload!) {
-    singleFileUpload(file: $file)
+    singleFileUpload(file: $file){
+      attachment_id
+      url
+      filename
+      encoding
+      mimetype
+      created_at
+      updated_at
+    }
   }
 `;
 
