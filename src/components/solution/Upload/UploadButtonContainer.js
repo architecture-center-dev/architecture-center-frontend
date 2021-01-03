@@ -17,10 +17,6 @@ const SINGLE_UPLOAD = gql`
   }
 `;
 
-const update = (cache, fetchResult) => {
-  console.log(cache, fetchResult);
-}
-
 export default function UploadButtonContainer({solution}) {
   const [mutate, { loading, error, data }] = useMutation(SINGLE_UPLOAD);
   const onChange = ({
@@ -28,7 +24,17 @@ export default function UploadButtonContainer({solution}) {
       validity,
       files: [file]
     }
-  }) => validity.valid && mutate({variables: { file, solution_id: solution.solution_id },update});
+  }) => validity.valid 
+          && mutate({
+                variables: { file, solution_id: solution.solution_id },
+                update: (cache, {data: {singleFileUpload}}) => {
+                  cache.modify({
+                    fields: {
+                      solutionById: (existingTodos) => ({...existingTodos, big_picture: singleFileUpload.url})
+                    }
+                  })
+                }
+            });
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{JSON.stringify(error, null, 2)}</div>;
@@ -39,5 +45,5 @@ export default function UploadButtonContainer({solution}) {
 }
 
 UploadButtonContainer.prototype = {
-  solution: PropTypes.object.isRequired
+  solution: PropTypes.object.isRequired,
 }

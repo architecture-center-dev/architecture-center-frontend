@@ -34,7 +34,7 @@ export default function Search({loadingSolutions}) {
   return (
     <div className={classes.root}>
       <Grid container spacing={3} alignContent={'center'} justify={'center'}>
-        <Grid item justify="center"  lg={4} xl={4} md={6} xs={12} >
+        <Grid item lg={4} xl={4} md={6} xs={12} >
 
             <div className={classes.containerSearchBar}>
                 <Typography variant={'h3'} align={'center'}>Architecture Center</Typography>
