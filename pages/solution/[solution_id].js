@@ -9,7 +9,7 @@ import MainTabs from '../../src/components/solution/MainTabs';
 import Tags from '../../src/components/solution/Tags';
 import Teams from '../../src/components/solution/Teams';
 import { useQuery } from '@apollo/client';
-import {LIST_SOLUTION_BY_ID_QUERY} from "../../src/components/solution/queries";
+import {LIST_SOLUTION_BY_ID_QUERY} from "../../src/components/solution/operations/queries";
 
 export default function Solution() {
 
@@ -21,9 +21,7 @@ export default function Solution() {
   });
   
   const solution = data != undefined? data.solutionById : {};
-
   const tags = solution.tags !== undefined ? solution.tags : [];
-  
   const members = solution.team_members !== undefined ? solution.team_members : [];
 
   return (
@@ -40,9 +38,9 @@ export default function Solution() {
           <Grid item lg={3}>
             <SolutionDetails solution={solution} />
             <br/>
-            <Teams members={members} />
+            <Teams members={members} solution_id={solution.solution_id} />
             <br/>
-            <Tags tags={tags} />
+            <Tags tags={tags} solution_id={solution.solution_id}/>
           </Grid> 
         </Grid> 
       </Container>

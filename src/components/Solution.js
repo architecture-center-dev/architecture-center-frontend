@@ -12,6 +12,7 @@ import Link from "next/link"
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    minWidth: 345
   },
   media: {
     height: 0,
