@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Canvas from '../Canvas'
+import CanvasContainer from '../Canvas/CanvasContainer'
 import BigPicture from "./BigPicture"
 
 function TabPanel(props) {
@@ -71,7 +71,7 @@ export default function MainTabs({solution}) {
             <BigPicture solution={solution} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-            <Canvas />
+            <CanvasContainer solution_id={solution.solution_id} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
             Diagrams

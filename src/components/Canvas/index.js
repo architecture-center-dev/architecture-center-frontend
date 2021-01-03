@@ -1,25 +1,23 @@
 import React from 'react';
-import { Chip, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 import purple from '@material-ui/core/colors/purple';
+import PropTypes from "prop-types"
+
 const useStyles = makeStyles(theme => ({
   column: {
     height: 600
   },
   mainAdvantages:{
     height: 150,
-    
   },
   mainDificulties:{
     height: 150,
-    
   },  
   fullRetangle: {
     height: '100%',
-    
   },
   halfRetangle: {
     height: '50%',
-    
   },
   titles:{
     padding: 5
@@ -34,17 +32,30 @@ const useStylesPostIt = makeStyles({
   }
 });
 
-const PostIt = ({children}) => {
+const PostIt = ({description}) => {
   const classes = useStylesPostIt();
 
   return (
     <div className={classes.postIr}>
-      {children}
+      {description}
     </div>
   );
 }
+// Dependencies
+const Segment = ({name, items}) => {
+  const classes = useStyles();
 
-const canvas = () => {
+  return(
+    <>
+    <Typography className={classes.titles} variant="caption5" component="h4">
+      {name}
+    </Typography>
+    {items.map(item => <PostIt description={item} />)}
+    </>
+  )
+}
+
+const canvas = ({canvas}) => {
 
   const classes = useStyles();
 
@@ -53,74 +64,54 @@ const canvas = () => {
         <Grid container spacing={2} justify="center">
           <Grid item lg={2} className={classes.column}>
             <Paper elevation={0} className={classes.fullRetangle}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                Dependencies
-              </Typography>
-              <PostIt>
-                Solução de vault
-              </PostIt>
-              <PostIt>
-                Gateway de pagamento
-              </PostIt>
+              <Segment name="Dependencies" items={canvas.dependencies} />
             </Paper>
           </Grid>
           <Grid item lg={2} className={classes.column}>
             <Paper elevation={0} className={classes.halfRetangle}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                Technology
-              </Typography>
+              <Segment name="Technology" items={canvas.technology} />
             </Paper>
             <Paper elevation={0} className={classes.halfRetangle}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                Patterns
-              </Typography>
+              <Segment name="Patterns" items={canvas.patterns} />
             </Paper>
           </Grid>
           <Grid item lg={2} className={classes.column}>
             <Paper elevation={0} className={classes.fullRetangle}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                  What problem does this solution solve?
-              </Typography>
+              <Segment name="What problem does this solution solve?" items={canvas.problem} />
             </Paper>
           </Grid>
           <Grid item lg={2} className={classes.column}>
             <Paper elevation={0} className={classes.halfRetangle}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                Functional requirements
-              </Typography>
+              <Segment name="Functional requirements" items={canvas.func_requirement} />
             </Paper>
             <Paper elevation={0} className={classes.halfRetangle}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                Non functional requirements
-              </Typography>
+            <Segment name="Non-functional requirements" items={canvas.non_func_requirement} />
             </Paper>
           </Grid>
           <Grid item lg={2} className={classes.column}>
             <Paper elevation={0} className={classes.fullRetangle}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                Context
-              </Typography>
+              <Segment name="Context" items={canvas.context} />
             </Paper>
           </Grid>
         </Grid>
         <Grid container spacing={2} justify="center">
         <Grid item lg={5}>
             <Paper elevation={0} className={classes.mainDificulties}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                Main dificulties
-              </Typography>
+              <Segment name="Main dificulties" items={canvas.difficulties} />
             </Paper>
           </Grid>
           <Grid item lg={5}>
             <Paper elevation={0} className={classes.mainAdvantages}>
-              <Typography className={classes.titles} variant="caption5" component="h4">
-                Main advantages
-              </Typography>
+              <Segment name="Main advantages" items={canvas.advantages} />
             </Paper>
           </Grid>
         </Grid>
       </>
     )
+}
+
+canvas.propTypes = {
+  canvas: PropTypes.object.isRequired
 }
 
 export default canvas;
