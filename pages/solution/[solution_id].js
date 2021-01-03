@@ -8,26 +8,8 @@ import SolutionDetails from '../../src/components/solution/SolutionDetails';
 import MainTabs from '../../src/components/solution/MainTabs';
 import Tags from '../../src/components/solution/Tags';
 import Teams from '../../src/components/solution/Teams';
-import { gql, useQuery } from '@apollo/client';
-
-const LIST_SOLUTION_BY_ID_QUERY = gql`
-  query($solution_id: String!) {
-    solutionById(solution_id: $solution_id){
-      solution_id
-      name
-      customer
-      project
-      market
-      year_month
-      description
-      big_picture
-      tags
-      team_members
-      created_at
-      updated_at    
-    }
-  }  
-`;
+import { useQuery } from '@apollo/client';
+import {LIST_SOLUTION_BY_ID_QUERY} from "../../src/components/solution/queries";
 
 export default function Solution() {
 
