@@ -1,7 +1,19 @@
 import { combineReducers } from "redux";
-import userReducer from "./userReducer";
-import boardReducer from "./boardReducer";
 
-const reducer = combineReducers({ userReducer, boardReducer });
+export const SOLUTION_LOADED = 'SOLUTION_LOADED';
+
+const solution = {};
+
+function solutionReducer(state = solution, action) {
+  switch (action.type) {
+    case SOLUTION_LOADED:
+      return {...action.solution};
+
+    default:
+      return state;
+  }
+}
+
+const reducer = combineReducers({ solutionReducer });
 
 export default reducer;

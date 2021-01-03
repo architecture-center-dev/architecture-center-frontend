@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import AppBar from '../../src/components/AppBar';
 import { useRouter } from 'next/router'
@@ -9,6 +9,7 @@ import MainTabs from '../../src/components/solution/MainTabs';
 import Tags from '../../src/components/solution/Tags';
 import Teams from '../../src/components/solution/Teams';
 import { gql, useQuery } from '@apollo/client';
+import { useDispatch, useSelector } from 'react-redux';
 
 const LIST_SOLUTION_BY_ID_QUERY = gql`
   query($solution_id: String!) {

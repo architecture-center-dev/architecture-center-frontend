@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ListSolutions({solutions}) {
   const classes = useStyles();
-  console.log(solutions);
+  
   return (
     <div className={classes.root}>
       <Grid container spacing={3} justify="center">
