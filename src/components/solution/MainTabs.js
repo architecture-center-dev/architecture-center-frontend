@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import CanvasContainer from '../Canvas/CanvasContainer'
+import Canvas from '../Canvas'
 import BigPicture from "./BigPicture"
 
 function TabPanel(props) {
@@ -42,7 +42,7 @@ function a11yProps(index) {
   };
 }
 
-export default function MainTabs({solution}) {
+export default function MainTabs({solution, canvas}) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -71,7 +71,7 @@ export default function MainTabs({solution}) {
             <BigPicture solution={solution} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-            <CanvasContainer solution_id={solution.solution_id} />
+            <Canvas canvas={canvas} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
             Diagrams
@@ -85,5 +85,6 @@ export default function MainTabs({solution}) {
 }
 
 MainTabs.propTypes = {
-  solution: PropTypes.object.isRequired
+  solution: PropTypes.object.isRequired,
+  canvas: PropTypes.object.isRequired
 }

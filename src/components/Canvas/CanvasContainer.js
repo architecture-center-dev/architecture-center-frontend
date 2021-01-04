@@ -4,21 +4,20 @@ import Canvas from "./index"
 import {LIST_CANVAS_BY_ID_QUERY} from "./operations/queries"
 import { useQuery } from '@apollo/client';
 
-const CanvasContainer = ({solution_id}) => {
+const CanvasContainer = ({canva}) => {
     const { loading, error, data  } = useQuery(LIST_CANVAS_BY_ID_QUERY, {
       variables: { solution_id },
     });
 
-    const canvas = data != undefined? data.canvasBySolutionId : {};
-
+    let canvas = data != undefined ? data.canvasBySolutionId : {};
+    
     return (
       <Canvas canvas={canvas}/>
     )
 }
 
 CanvasContainer.propTypes = {
-  solution_id: PropTypes.string.isRequired
+  canvas: PropTypes.object.isRequired
 }
-
 
 export default CanvasContainer;

@@ -21,6 +21,7 @@ export default function Solution() {
   });
   
   const solution = data != undefined? data.solutionById : {};
+  const canvas = data != undefined? data.canvasBySolutionId : {};
   const tags = solution.tags !== undefined ? solution.tags : [];
   const members = solution.team_members !== undefined ? solution.team_members : [];
 
@@ -33,7 +34,7 @@ export default function Solution() {
         <br/>
         <Grid container spacing={3}>
           <Grid item  lg={9}>
-            <MainTabs solution={solution} />
+            <MainTabs solution={solution} canvas={canvas} />
           </Grid> 
           <Grid item lg={3}>
             <SolutionDetails solution={solution} />
