@@ -90,6 +90,7 @@ class Login extends React.Component {
   }
 
   _onLogin() {
+    window.location.href = "/";
     let { onLogin } = this.props;
 
     this.setState({ passwordFieldEmpty: false, emailFieldEmpty: false });
@@ -120,7 +121,7 @@ class Login extends React.Component {
   render() {
     let {
       classes,
-      state: { showPreloader, success, message }
+      state: { showPreloader = false, success = true, message = "" }
     } = this.props;
 
     const buttonClassname = makeStyles({
@@ -136,7 +137,7 @@ class Login extends React.Component {
             direction="row"
             justify="flex-start"
           >
-            <Grid item xs={12} sm={12} md={7} lg={8} xl={8}>
+            <Grid item xs={12} sm={12} md={7} lg={8} xl={9}>
               <Paper
                 elevation={0}
                 className={[classes.paper, classes.backgroundGreen].join(" ")}
@@ -168,7 +169,7 @@ class Login extends React.Component {
                 </div>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={12} md={5} lg={4} xl={4}>
+            <Grid item xs={12} sm={12} md={5} lg={4} xl={3}>
               <Paper
                 elevation={0}
                 className={classes.paper}
@@ -268,12 +269,7 @@ class Login extends React.Component {
                             className={classes.buttonProgress}
                           />
                         )}
-                        <br />
                       </div>
-                      <br />
-                      <Typography variant="body1" gutterBottom align="right">
-                        Do not have an account yet ?{" "}
-                      </Typography>
                     </div>
                   </div>
                  

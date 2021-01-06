@@ -12,12 +12,11 @@ const BreadCumbs = () => {
   return (
     <Breadcrumbs aria-label="breadcrumb">
       <Link color="inherit" href="/" onClick={handleClick}>
-        Material-UI
+        Home Page
       </Link>
       <Link color="inherit" href="/getting-started/installation/" onClick={handleClick}>
-        Core
+        Solution
       </Link>
-      <Typography color="textPrimary">Breadcrumb</Typography>
     </Breadcrumbs>
   );
 }

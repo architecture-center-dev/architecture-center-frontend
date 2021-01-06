@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { TextField, Typography } from '@material-ui/core';
@@ -31,6 +31,12 @@ const keyUpSearch = (event, loadingSolutions) => {
 export default function Search({loadingSolutions}) {
   const classes = useStyles();
 
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    inputEl.current.querySelector('input').focus();
+  },[])
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3} alignContent={'center'} justify={'center'}>
@@ -39,6 +45,7 @@ export default function Search({loadingSolutions}) {
             <div className={classes.containerSearchBar}>
                 <Typography variant={'h3'} align={'center'}>Architecture Center</Typography>
                 <TextField 
+                ref={inputEl}
                 id="outlined-basic" 
                 label="Search by i.e 'kubernetes'" 
                 variant="outlined" fullWidth 

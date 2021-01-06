@@ -11,14 +11,10 @@ const LIST_FILTERED_SOLUTIONS_QUERY = gql`
     solution(search:$search) {
       solution_id
       name
-      customer
-      project
-      market
       year_month
       description
       tags
-      created_at
-      updated_at    
+      big_picture
     }
   }  
 `;

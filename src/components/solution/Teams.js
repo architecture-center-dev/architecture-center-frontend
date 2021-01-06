@@ -35,7 +35,7 @@ export default function Teams({members, solution_id}) {
               className={classes.button}
               startIcon={<AddIcon />}
               size="small"
-              onClick={() => setAddTeamMemberVisible(!addTeamMemberVisible)}
+              onClick={() => setAddTeamMemberVisible(true)}
             >
               member
             </Button>

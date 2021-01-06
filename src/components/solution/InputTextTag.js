@@ -3,8 +3,14 @@ import PropTypes from "prop-types";
 import { TextField } from '@material-ui/core';
 
 const InputTextTag = ({label, onKeyUp, onFocusOut}) => {
+    const inputEl = useRef(null);
+    useEffect(() => {
+        inputEl.current.querySelector('input').focus();
+        
+    },[])
     return(
         <TextField 
+            ref={inputEl}
             label={label} 
             variant="outlined" 
             fullWidth

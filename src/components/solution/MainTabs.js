@@ -8,7 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Canvas from '../Canvas'
 import BigPicture from "./BigPicture"
-
+import Reference from "./Reference";
+import ReferenceLinks from "./Reference/Links";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -74,10 +75,10 @@ export default function MainTabs({solution, canvas}) {
             <Canvas canvas={canvas} />
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-            Diagrams
+            <Reference />
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-            References
+          <ReferenceLinks />
         </TabPanel>
       
     </div>

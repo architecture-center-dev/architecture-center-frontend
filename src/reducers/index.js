@@ -1,19 +1,6 @@
 import { combineReducers } from "redux";
+import userReducer from "./userReducer";
 
-export const SOLUTION_LOADED = 'SOLUTION_LOADED';
-
-const solution = {};
-
-function solutionReducer(state = solution, action) {
-  switch (action.type) {
-    case SOLUTION_LOADED:
-      return {...action.solution};
-
-    default:
-      return state;
-  }
-}
-
-const reducer = combineReducers({ solutionReducer });
+const reducer = combineReducers({ userReducer });
 
 export default reducer;

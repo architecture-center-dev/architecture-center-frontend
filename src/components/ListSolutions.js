@@ -17,8 +17,8 @@ export default function ListSolutions({solutions}) {
       <Grid container spacing={3} justify="center">
         {
           solutions.map(
-            ({solution_id,name,description,year_month}) => 
-            (<Grid key={solution_id} item ><Solution solution_id={solution_id} name={name} description={description} date={year_month} image="/checkout.jpg" /></Grid>)
+            ({solution_id,name,description,year_month, big_picture}) => 
+            (<Grid key={solution_id} item ><Solution solution_id={solution_id} name={name} description={description} date={year_month} image={big_picture} /></Grid>)
           )
         }        
       </Grid>
