@@ -1,15 +1,26 @@
 import { useMemo } from "react";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from 'apollo-upload-client'
+import { setContext } from '@apollo/client/link/context';
 
  let apolloClient;
+
+ const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ''
+    }
+  };
+});
 
  export function createApolloClient() {
    return new ApolloClient({
      ssrMode: typeof window === "undefined", // set to true for SSR
-     link: createUploadLink({
+     link: authLink.concat(createUploadLink({
        uri: "http://localhost/graphql",
-     }),
+     })),
      cache: new InMemoryCache(),
    });
  }

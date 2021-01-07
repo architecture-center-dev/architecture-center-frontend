@@ -1,5 +1,4 @@
-import * as React from "react";
-import { withStyles, Theme } from "@material-ui/core/styles";
+import React, {useState, useRef, useEffect} from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -12,8 +11,9 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from '@material-ui/styles';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
+import PropTypes from "prop-types"
 
-const styles = (theme) => ({
+const styles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
   },
@@ -61,72 +61,47 @@ const styles = (theme) => ({
   textError: {
     color: theme.palette.error.main
   }
-});
+}));
 
+const Login = ({onLogin}) =>  {
 
+    const classes = styles()
 
-class Login extends React.Component {
-  state = {
-    email: "",
-    password: "",
-    emailFieldEmpty: false,
-    passwordFieldEmpty: false
-  };
-
-  _inputEmail;
-
-  constructor(props) {
-    super(props);
-
-    this._onClickEnter = this._onClickEnter.bind(this);
-    this.responseFacebook = this.responseFacebook.bind(this);
-    this._inputEmail = {focus(){}};
-  }
-
-  componentDidMount() {
-    if (this._inputEmail !== undefined) {
-      this._inputEmail.focus();
-    }
-  }
-
-  _onLogin() {
-    window.location.href = "/";
-    let { onLogin } = this.props;
-
-    this.setState({ passwordFieldEmpty: false, emailFieldEmpty: false });
-
-    if (!this.state.email.length) {
-      this.setState({ emailFieldEmpty: true });
-
-      return;
-    } else if (!this.state.password.length) {
-      this.setState({ passwordFieldEmpty: true });
-
-      return;
+    const [email, setemail] = useState("");
+    const [password, setpassword] = useState("");
+    const [emailFieldEmpty, setemailFieldEmpty] = useState(false);
+    const [passwordFieldEmpty, setpasswordFieldEmpty] = useState(false);
+    const _inputEmail = useRef(null);
+    const [showPreloader, setShowPreloader] = useState(false)
+    const [message, setMessage] = useState("");
+    
+    const _onLogin = () => {
+      setShowPreloader(true);
+      setemailFieldEmpty(false);
+      setpasswordFieldEmpty(false);
+    
+      if (!email.length) {
+        setemailFieldEmpty(true);
+    
+        return;
+      } else if (!password.length) {
+        setpasswordFieldEmpty(true)
+   
+        return;
+      }
+    
+      onLogin(email, password, setShowPreloader, setMessage);
     }
 
-    onLogin(this.state.email, this.state.password);
-  }
-
-  _onClickEnter(event) {
-    if (event.key == "Enter") {
-      this._onLogin();
+    const _onClickEnter = (event) => {
+      if (event.key == "Enter") {
+        _onLogin();
+      }
     }
-  }
 
-  responseFacebook(res) {
-    this.props.oauthFacebook(res.accessToken);
-  }
-
-  render() {
-    let {
-      classes,
-      state: { showPreloader = false, success = true, message = "" }
-    } = this.props;
-
-    const buttonClassname = makeStyles({
-      [classes.buttonSuccess]: success
-    });
+    useEffect(() => {
+      _inputEmail.current.focus()
+    },[])
 
     return (
       <Grid container className={classes.root}>
@@ -194,16 +169,16 @@ class Login extends React.Component {
                     }}
                   >
                     <TextField
-                      inputRef={input => (this._inputEmail = input)}
+                      inputRef={_inputEmail}
                       disabled={showPreloader}
-                      error={this.state.emailFieldEmpty}
+                      error={emailFieldEmpty}
                       helperText={
-                        this.state.emailFieldEmpty
+                        emailFieldEmpty
                           ? "The email field is empty"
                           : ""
                       }
-                      onChange={el => this.setState({ email: el.target.value })}
-                      onKeyUp={this._onClickEnter}
+                      onChange={el => setemail(el.target.value )}
+                      onKeyUp={_onClickEnter}
                       className={classes.text}
                       label="Type your email"
                       InputProps={{
@@ -214,18 +189,19 @@ class Login extends React.Component {
                         )
                       }}
                     />
+
                     <TextField
                       disabled={showPreloader}
-                      error={this.state.passwordFieldEmpty}
+                      error={passwordFieldEmpty}
                       helperText={
-                        this.state.passwordFieldEmpty
+                        passwordFieldEmpty
                           ? "The password field is empty"
                           : ""
                       }
                       onChange={el =>
-                        this.setState({ password: el.target.value })
+                        setpassword(el.target.value)
                       }
-                      onKeyUp={this._onClickEnter}
+                      onKeyUp={_onClickEnter}
                       type="password"
                       className={classes.text}
                       label="Password"
@@ -237,6 +213,7 @@ class Login extends React.Component {
                         )
                       }}
                     />
+
                     <Typography
                       className={classes.textError}
                       variant="subtitle2"
@@ -253,11 +230,10 @@ class Login extends React.Component {
                       <br />
                       <div className={classes.wrapper}>
                         <Button
-                          onClick={this._onLogin.bind(this)}
+                          onClick={_onLogin}
                           size="large"
                           variant="contained"
                           color="primary"
-                          className={buttonClassname}
                           disabled={showPreloader}
                         >
                           Sign In
@@ -280,7 +256,11 @@ class Login extends React.Component {
         </Grid>
       </Grid>
     );
-  }
+  
 }
 
-export default withStyles(styles)(Login);
+Login.propTypes = {
+  onLogin : PropTypes.func.isRequired
+}
+
+export default Login;

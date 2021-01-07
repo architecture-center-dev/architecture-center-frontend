@@ -11,12 +11,9 @@ const CreateItemContainer = ({canvas_id, setVisible, item}) => {
     
     const onKeyUp = ({keyCode, target})=> {
         if(keyCode == ENTER_KEY){
-            console.log({ canvas_id, value: target.value, item });
             addItemCanvas(
                 {variables:{ canvas_id, value: target.value, item },
                 update: (cache, {data:{createItemCanvas}}) => {
-                    console.log("CACHE", item, createItemCanvas[item]);
-                    
                     cache.modify({
                       fields: {
                         canvasBySolutionId: (existingItem) => ({...existingItem, [item]: createItemCanvas[item]})
