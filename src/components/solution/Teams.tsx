@@ -4,7 +4,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Button, Chip, Divider } from '@material-ui/core';
-import PropTypes from "prop-types"
 import AddIcon from '@material-ui/icons/Add';
 import InputTextTeamContainer from "./InputTextTeamContainer";
 
@@ -20,7 +19,12 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Teams({members, solution_id}) {
+export type TeamsProps = {
+  members: Array<string>,
+  solution_id: string
+}
+
+export default function Teams({members, solution_id}: TeamsProps) {
   const classes = useStyles();
   const [addTeamMemberVisible, setAddTeamMemberVisible] = useState(false);
   
@@ -34,7 +38,6 @@ export default function Teams({members, solution_id}) {
               color="primary"
               className={classes.button}
               startIcon={<AddIcon />}
-              size="small"
               onClick={() => setAddTeamMemberVisible(true)}
             >
               member
@@ -43,13 +46,8 @@ export default function Teams({members, solution_id}) {
         <Divider />
         {addTeamMemberVisible ? <InputTextTeamContainer setVisible={setAddTeamMemberVisible} solution_id={solution_id} />: null}
         <br/>
-        {members.map(member => <Chip key={member} className={classes.chip} color="primary"  label={member} />)}
+        {members.map((member:string) => <Chip key={member} className={classes.chip} color="primary"  label={member} />)}
       </CardContent>
     </Card>
   );
-}
-
-Teams.propTypes = {
-  members: PropTypes.array.isRequired,
-  solution_id: PropTypes.string.isRequired
 }

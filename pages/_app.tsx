@@ -10,7 +10,7 @@ import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "../src/lib/apolloClient";
 
 
-export default function MyApp(props) {
+export default function MyApp(props:any) {
   const { Component, pageProps } = props;
   const store = configureStore(true);
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -20,7 +20,7 @@ export default function MyApp(props) {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
+      (jssStyles as any).parentElement.removeChild(jssStyles);
     }
   }, []);
 
@@ -34,9 +34,9 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <ApolloProvider client={apolloClient}>
-          <Provider store={store}>
+          
             <Component {...pageProps} />
-          </Provider>
+          
         </ApolloProvider>
         
       </ThemeProvider>

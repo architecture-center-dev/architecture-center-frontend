@@ -10,6 +10,7 @@ import Canvas from '../Canvas'
 import BigPicture from "./BigPicture"
 import Reference from "./Reference";
 import ReferenceLinks from "./Reference/Links";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 

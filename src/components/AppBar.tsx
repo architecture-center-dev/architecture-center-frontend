@@ -129,7 +129,7 @@ export default function PrimarySearchAppBar() {
           <Link href="/">
             <a>
             <Typography className={classes.title} variant="h6" noWrap>
-              Sensedia
+              {process.env.NEXT_PUBLIC_NAME}
             </Typography>
             </a>
           </Link>
