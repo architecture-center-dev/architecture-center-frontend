@@ -1,25 +1,47 @@
-# Next.js example
+# Architecture center front-end
+
+Open source tool to be a knowledge base for architectural solutions.
+
+**Made with**
+* ReactJs
+* NextJs
+* Apollo GrapghQl
+* Material UI
 
 ## How to use
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+
+#### For development
 
 ```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs
-cd nextjs
+yarn
+
+yarn dev
 ```
 
-Install it and run:
+#### For production
+Buid and run it:
 
 ```sh
-npm install
-npm run dev
+yarn build
+yarn start
 ```
 
-or:
+## Features
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui-org/material-ui/tree/master/examples/nextjs)
+* Add new solutions
+* Search of the sollutions
+* Solution details
+* **Architecture Canvas** - Visual tool to give a shared vision of architectural solutions
 
-## The idea behind the example
+### Add new solutions
 
-[Next.js](https://github.com/zeit/next.js) is a framework for server-rendered React apps.
+![Search solutions](docs/add-solution.png)
+
+### Search of the soluttions
+
+![Search solutions](docs/search.png)
+
+### Architecture Canvas
+
+![Search solutions](docs/architecture-canvas.png)
