@@ -7,9 +7,6 @@ module.exports = {
     },
     testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
     moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-    // Setup Enzyme
-    snapshotSerializers: ["enzyme-to-json/serializer"],
-    setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
     testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
     collectCoverage: false,
     collectCoverageFrom: ["src/**/*.ts", "src/**/*.tsx"],

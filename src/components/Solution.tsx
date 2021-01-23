@@ -6,10 +6,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import PropTypes from 'prop-types';
 import Link from "next/link"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     maxWidth: 345,
     minWidth: 345
@@ -20,16 +19,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Solution({solution_id,name,description,date,image}) {
+type SolutionProps = {
+  solution_id: string,
+  name: string,
+  description: string,
+  date: string,
+  image: string
+}
+
+export default function Solution({ solution_id, name, description, date, image }: SolutionProps) {
   const classes = useStyles();
-  
+
   return (
     <Card className={classes.root}>
       <Link href={`/solution/${solution_id}`}>
-      <CardHeader
-        title={name}
-        subheader={date}
-      />
+        <CardHeader
+          title={name}
+          subheader={date}
+        />
       </Link>
       <CardMedia
         className={classes.media}
@@ -38,21 +45,13 @@ export default function Solution({solution_id,name,description,date,image}) {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-            {description}
+          {description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-      
+
       </CardActions>
-      
+
     </Card>
   );
 }
-
-Solution.propTypes = {
-  solution_id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-};
