@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcumb /> Component should render correctely 1`] = `
+<a
+  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit"
+  href="/getting-started/installation/"
+>
+  Solution
+</a>
+`;

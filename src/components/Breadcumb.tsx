@@ -1,9 +1,8 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import React, { SyntheticEvent } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 
-function handleClick(event) {
+function handleClick(event : SyntheticEvent) {
   event.preventDefault();
   console.info('You clicked a breadcrumb.');
 }
