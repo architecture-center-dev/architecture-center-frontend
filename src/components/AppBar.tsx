@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -42,14 +42,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<HTMLElement | null>(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleProfileMenuOpen = (event: SyntheticEvent) => {
+    setAnchorEl(event.currentTarget as HTMLElement);
   };
 
   const handleMobileMenuClose = () => {
@@ -61,8 +61,8 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
+  const handleMobileMenuOpen = (event: SyntheticEvent) => {
+    setMobileMoreAnchorEl(event.currentTarget as HTMLElement);
   };
 
   const menuId = 'primary-search-account-menu';
@@ -108,7 +108,7 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={handleProfileMenuOpen} data-testid="profileMenuOpen">
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -128,21 +128,19 @@ export default function PrimarySearchAppBar() {
         <Toolbar>
           <Link href="/">
             <a>
-            <Typography className={classes.title} variant="h6" noWrap>
-              {process.env.NEXT_PUBLIC_NAME}
-            </Typography>
+              <Typography className={classes.title} variant="h6" noWrap>
+                {process.env.NEXT_PUBLIC_NAME}
+              </Typography>
             </a>
           </Link>
-          
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link href="/solution/add">
               <Button size="small"
                 variant="contained"
                 color="primary"
-                className={classes.button}
                 startIcon={<AddIcon />}
-                
               >
                 Solution
               </Button>
