@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListSolutions /> Component should render correctely 1`] = `
+<div
+  class="makeStyles-root-1"
+  data-testid="list-solutions"
+>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-justify-xs-center"
+  />
+</div>
+`;
