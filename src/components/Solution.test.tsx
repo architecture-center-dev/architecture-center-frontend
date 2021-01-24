@@ -3,7 +3,7 @@ import Solution, { SolutionProps } from "./Solution";
 import { render } from '@testing-library/react'
 
 describe("<Solution />", () => {
-  it.only("Component should render correctely", async () => {
+  it("Component should render correctely", async () => {
 
     const props: SolutionProps = {
       solution_id: "solution_id",
