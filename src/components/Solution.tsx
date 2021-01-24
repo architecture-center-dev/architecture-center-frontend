@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-type SolutionProps = {
+export type SolutionProps = {
   solution_id: string,
   name: string,
   description: string,
@@ -31,7 +31,7 @@ export default function Solution({ solution_id, name, description, date, image }
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} data-testid="solution">
       <Link href={`/solution/${solution_id}`}>
         <CardHeader
           title={name}

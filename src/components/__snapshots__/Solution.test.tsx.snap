@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Solution /> Component should render correctely 1`] = `
+<div
+  class="MuiPaper-root MuiCard-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
+  data-testid="solution"
+>
+  <div
+    class="MuiCardHeader-root"
+  >
+    <div
+      class="MuiCardHeader-content"
+    >
+      <span
+        class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+      >
+        ame
+      </span>
+      <span
+        class="MuiTypography-root MuiCardHeader-subheader MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+      >
+        ate
+      </span>
+    </div>
+  </div>
+  <div
+    class="MuiCardMedia-root makeStyles-media-2"
+    style="background-image: url(image);"
+    title="ame"
+  />
+  <div
+    class="MuiCardContent-root"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+    >
+      description
+    </p>
+  </div>
+  <div
+    class="MuiCardActions-root"
+  />
+</div>
+`;
