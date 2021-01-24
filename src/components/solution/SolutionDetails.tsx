@@ -4,7 +4,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Divider } from '@material-ui/core';
-import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   root: {
@@ -18,14 +17,27 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SolutionDetails({solution}) {
+export type Solution = {
+  name: string,
+  customer: string,
+  project: string,
+  market: string,
+  year_month: string,
+  description: string
+}
+
+export type SolutionDetailsProps = {
+  solution: Solution
+}
+
+export default function SolutionDetails({ solution }: SolutionDetailsProps) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h2">
-            Solution details
+          Solution details
         </Typography>
         <Divider />
         <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -73,8 +85,4 @@ export default function SolutionDetails({solution}) {
       </CardContent>
     </Card>
   );
-}
-
-SolutionDetails.propTypes = {
-  solution: PropTypes.object.isRequired
 }
