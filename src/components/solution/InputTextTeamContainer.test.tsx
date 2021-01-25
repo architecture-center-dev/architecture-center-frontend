@@ -1,12 +1,12 @@
 import * as React from "react";
-import InputTextTeamContainer, { InputTextTagContainerProps } from "./InputTextTeamContainer";
+import InputTextTeamContainer, { InputTextTeamContainerProps } from "./InputTextTeamContainer";
 import { fireEvent, render } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing';
 
 describe("<InputTextTeamContainer />", () => {
     it("Component should render correctely", async () => {
 
-        const props: InputTextTagContainerProps = {
+        const props: InputTextTeamContainerProps = {
             solution_id: "2345",
             setVisible: jest.fn()
         }
