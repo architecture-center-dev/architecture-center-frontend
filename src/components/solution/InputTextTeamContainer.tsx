@@ -5,12 +5,12 @@ import { ADD_MEMBER_TO_SOLUTION } from "./operations/mutaions";
 
 const ENTER_KEY = 13;
 
-export type InputTextTagContainerProps = {
+export type InputTextTeamContainerProps = {
     solution_id: string,
     setVisible: Function
 }
 
-const InputTextTagContainer = ({ solution_id, setVisible }: InputTextTagContainerProps) => {
+const InputTextTagContainer = ({ solution_id, setVisible }: InputTextTeamContainerProps) => {
 
     const [saveTemMeber] = useMutation(ADD_MEMBER_TO_SOLUTION);
 
