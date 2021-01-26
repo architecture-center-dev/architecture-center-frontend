@@ -22,6 +22,7 @@ export default function UploadButton({onChange}: UploadButtonProps) {
     <div className={classes.div}>
       <label htmlFor="upload-photo">
         <input
+          data-testid="upload-image"
           className={classes.button}
           id="upload-photo"
           name="upload-photo"
