@@ -13,7 +13,18 @@ describe("<MainTabs />", () => {
         name: "name",
         year_month: "2021/12"
       },
-      canvas: {}
+      canvas: {
+        canvas_id: "12345",
+        dependencies:[],
+        technology:[],
+        patterns:[],
+        problem:[],
+        func_requirement:[],
+        non_func_requirement:[],
+        context:[],
+        difficulties:[],
+        advantages:[],
+      }
     }
 
     const {getByText} = render(<MainTabs {...props} />);
