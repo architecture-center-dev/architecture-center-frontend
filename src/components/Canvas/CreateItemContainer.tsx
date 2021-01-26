@@ -5,7 +5,7 @@ import { CREATE_ITEM_CANVAS } from "./operations/mutations";
 
 const ENTER_KEY = 13;
 
-type CreateItemContainerProps = {
+export type CreateItemContainerProps = {
     canvas_id: string,
     setVisible: Function,
     item: string
