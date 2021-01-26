@@ -1,31 +1,26 @@
 import * as React from "react";
-import InputTextTagContainer, { InputTextTagContainerProps } from "./InputTextTagContainer";
-import { fireEvent, render } from '@testing-library/react'
+import UploadButtonContainer, { UploadButtonContainerProps } from "./UploadButtonContainer";
+import { render } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing';
 
-describe("<InputTextTagContainer />", () => {
+describe("<UploadButtonContainer />", () => {
     it("Component should render correctely", async () => {
 
-        const props: InputTextTagContainerProps = {
-            solution_id: "2345",
-            setVisible: jest.fn()
+        const props: UploadButtonContainerProps = {
+            solution: {
+                solution_id: "12121243",
+                name: "solution",
+                description: "description",
+                year_month: "2012/12",
+                big_picture: "image.jpg"
+            }
         }
         const { getByTestId } = render(
             <MockedProvider mocks={[]} addTypename={false}>
-                <InputTextTagContainer {...props} />
+                <UploadButtonContainer {...props} />
             </MockedProvider>
         );
 
-        const input = getByTestId('input-tag');
-
-        fireEvent.keyUp(input, { value: "abc", keyCode: 13 });
-
-        fireEvent.click(input);
-
-        fireEvent.blur(input.querySelector('input') || window);
-
-        expect(input).toBeInTheDocument
-        expect(props.setVisible).toBeCalledTimes(2);
-
+        expect(getByTestId('upload-image')).toBeInTheDocument
     });
 });

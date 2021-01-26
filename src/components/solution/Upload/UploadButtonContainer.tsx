@@ -24,14 +24,18 @@ export type Solution = {
   big_picture: string
 }
 
-export default function UploadButtonContainer({ solution }: { solution: Solution }) {
+export type UploadButtonContainerProps = {
+  solution: Solution
+}
+
+export default function UploadButtonContainer({ solution }: UploadButtonContainerProps) {
   const [mutate, { loading, error }] = useMutation(SINGLE_UPLOAD);
   const onChange = ({
     target: {
       validity,
       files: [file]
     }
-  } : any) => validity.valid
+  }: any) => validity.valid
     && mutate({
       variables: { file, solution_id: solution.solution_id },
       update: (cache, { data: { singleFileUpload } }) => {
