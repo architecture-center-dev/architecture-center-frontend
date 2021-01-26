@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef, useEffect, KeyboardEvent} from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -8,12 +8,12 @@ import LockIcon from "@material-ui/icons/Https";
 import EmailIcon from "@material-ui/icons/Email";
 import Check from "@material-ui/icons/Check";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles  } from '@material-ui/styles';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import green from "@material-ui/core/colors/green";
-import PropTypes from "prop-types"
+import { Theme } from "@material-ui/core";
 
-const styles = makeStyles((theme) => ({
+const styles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1
   },
@@ -63,7 +63,11 @@ const styles = makeStyles((theme) => ({
   }
 }));
 
-const Login = ({onLogin}) =>  {
+export type LoginProps = {
+  onLogin: Function
+}
+
+const Login = ({onLogin}: LoginProps) =>  {
 
     const classes = styles()
 
@@ -71,7 +75,7 @@ const Login = ({onLogin}) =>  {
     const [password, setpassword] = useState("");
     const [emailFieldEmpty, setemailFieldEmpty] = useState(false);
     const [passwordFieldEmpty, setpasswordFieldEmpty] = useState(false);
-    const _inputEmail = useRef(null);
+    const _inputEmail = useRef<HTMLInputElement>(null);
     const [showPreloader, setShowPreloader] = useState(false)
     const [message, setMessage] = useState("");
     
@@ -93,22 +97,21 @@ const Login = ({onLogin}) =>  {
       onLogin(email, password, setShowPreloader, setMessage);
     }
 
-    const _onClickEnter = (event) => {
+    const _onClickEnter = (event : KeyboardEvent<HTMLDivElement>) => {
       if (event.key == "Enter") {
         _onLogin();
       }
     }
 
     useEffect(() => {
-      _inputEmail.current.focus()
+      _inputEmail?.current?.focus()
     },[])
 
     return (
       <Grid container className={classes.root}>
-        <Grid item xs={12} className={classes.demo}>
+        <Grid item xs={12}>
           <Grid
             container
-            className={classes.demo}
             direction="row"
             justify="flex-start"
           >
@@ -257,10 +260,6 @@ const Login = ({onLogin}) =>  {
       </Grid>
     );
   
-}
-
-Login.propTypes = {
-  onLogin : PropTypes.func.isRequired
 }
 
 export default Login;

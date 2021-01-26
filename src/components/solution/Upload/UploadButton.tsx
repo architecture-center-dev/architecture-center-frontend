@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
-import PropTypes from "prop-types";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   button: {
     display: "none" 
   },
@@ -12,7 +11,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function UploadButton({onChange}) {
+export type UploadButtonProps = {
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+}
+
+export default function UploadButton({onChange}: UploadButtonProps) {
   const classes = useStyles();
 
   return (
@@ -32,8 +35,4 @@ export default function UploadButton({onChange}) {
       </label>
     </div>
   );
-}
-
-UploadButton.prototype = {
-  onChange: PropTypes.func.isRequired
 }

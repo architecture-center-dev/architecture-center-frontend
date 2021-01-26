@@ -15,11 +15,11 @@ const CreateItemContainer = ({ canvas_id, setVisible, item }: CreateItemContaine
 
     const [addItemCanvas] = useMutation(CREATE_ITEM_CANVAS);
 
-    const onKeyUp = ({ keyCode, target }) => {
+    const onKeyUp = ({ keyCode, target }: KeyboardEvent) => {
         if (keyCode == ENTER_KEY) {
             addItemCanvas(
                 {
-                    variables: { canvas_id, value: target.value, item },
+                    variables: { canvas_id, value: (target as HTMLInputElement).value, item },
                     update: (cache, { data: { createItemCanvas } }) => {
                         cache.modify({
                             fields: {
@@ -29,7 +29,7 @@ const CreateItemContainer = ({ canvas_id, setVisible, item }: CreateItemContaine
                     }
                 });
 
-            target.value = '';
+                (target as HTMLInputElement).value = '';
             setVisible(false);
         }
     }

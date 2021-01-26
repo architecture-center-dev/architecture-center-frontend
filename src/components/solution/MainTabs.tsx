@@ -4,7 +4,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Canvas from '../Canvas'
+import Canvas, {CanvasProp} from '../Canvas'
 import BigPicture from "./BigPicture"
 import Reference from "./Reference";
 import ReferenceLinks from "./Reference/Links";
@@ -42,14 +42,23 @@ function a11yProps(index: number) {
   };
 }
 
+export type Solution = {
+  solution_id: string,
+  name: string,
+  description: string,
+  year_month: string,
+  big_picture: string
+}
+
 export type MainTabsProps = {
-  solution: object,
-  canvas: object
+  solution: Solution,
+  canvas: CanvasProp
 }
 
 export default function MainTabs({solution, canvas}: MainTabsProps) {
   const [value, setValue] = React.useState(0);
-
+  
+  // @ts-ignore
   const handleChange = (event: ChangeEvent<{}>, newValue: any) => {
     setValue(newValue);
   };

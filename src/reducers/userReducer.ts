@@ -7,7 +7,7 @@ const initialState = {
   user: {}
 };
 
-export default function userReducer(state = initialState, action) {
+export default function userReducer(state = initialState, action: any) {
   switch (action.type) {
     case actionsType.CREATE_ACCOUNT_SEND:
       return {

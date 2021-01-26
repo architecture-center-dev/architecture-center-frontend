@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import { gql, useMutation } from '@apollo/client';
 import UploadButton from "./UploadButton"
 
@@ -17,33 +16,37 @@ const SINGLE_UPLOAD = gql`
   }
 `;
 
-export default function UploadButtonContainer({solution}) {
-  const [mutate, { loading, error, data }] = useMutation(SINGLE_UPLOAD);
+export type Solution = {
+  solution_id: string,
+  name: string,
+  description: string,
+  year_month: string,
+  big_picture: string
+}
+
+export default function UploadButtonContainer({ solution }: { solution: Solution }) {
+  const [mutate, { loading, error }] = useMutation(SINGLE_UPLOAD);
   const onChange = ({
     target: {
       validity,
       files: [file]
     }
-  }) => validity.valid 
-          && mutate({
-                variables: { file, solution_id: solution.solution_id },
-                update: (cache, {data: {singleFileUpload}}) => {
-                  cache.modify({
-                    fields: {
-                      solutionById: (existingTodos) => ({...existingTodos, big_picture: singleFileUpload.url})
-                    }
-                  })
-                }
-            });
+  } : any) => validity.valid
+    && mutate({
+      variables: { file, solution_id: solution.solution_id },
+      update: (cache, { data: { singleFileUpload } }) => {
+        cache.modify({
+          fields: {
+            solutionById: (existingTodos) => ({ ...existingTodos, big_picture: singleFileUpload.url })
+          }
+        })
+      }
+    });
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{JSON.stringify(error, null, 2)}</div>;
 
   return (
-    <UploadButton onChange={onChange}/>
+    <UploadButton onChange={onChange} />
   );
-}
-
-UploadButtonContainer.prototype = {
-  solution: PropTypes.object.isRequired,
 }
