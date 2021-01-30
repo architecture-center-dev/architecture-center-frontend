@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Container from '@material-ui/core/Container';
 import AppBar from '../src/components/AppBar';
 import Search from '../src/components/Search';
 import ListSolutions from '../src/components/ListSolutions';
-import { makeStyles } from '@material-ui/core';
-import { gql, useLazyQuery, useQuery } from "@apollo/client";
+import { gql, useLazyQuery } from "@apollo/client";
 
 const LIST_FILTERED_SOLUTIONS_QUERY = gql`
   query filterSolutions($search: String) {
@@ -19,18 +18,7 @@ const LIST_FILTERED_SOLUTIONS_QUERY = gql`
   }  
 `;
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-  buttonAlign: {
-    textAlign: "right"
-  }
-}));
-
 export default function Index() {
-
-  const classes = useStyles();
 
   const [getFilteredSolutions, { data }] = useLazyQuery(LIST_FILTERED_SOLUTIONS_QUERY);
 

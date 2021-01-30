@@ -16,7 +16,7 @@ export default function Solution() {
   const router = useRouter()
   const { solution_id } = router.query
 
-  const { loading, error, data } = useQuery(LIST_SOLUTION_BY_ID_QUERY, {
+  const { data } = useQuery(LIST_SOLUTION_BY_ID_QUERY, {
     variables: { solution_id },
   });
   
