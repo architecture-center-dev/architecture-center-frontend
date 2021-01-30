@@ -1,33 +1,25 @@
 import * as React from "react";
-import CreateItemContainer, { CreateItemContainerProps } from "./CreateItemContainer";
-import { fireEvent, render } from '@testing-library/react'
+import LoginContainer from "./LoginContainer";
 import { MockedProvider } from "@apollo/client/testing";
+import { ThemeProvider } from "@material-ui/core";
+import theme from '../../theme';
+import { render } from "@testing-library/react";
 
-describe("<CreateItemContainer />", () => {
+describe("<LoginContainer />", () => {
   it("Component should render correctely", async () => {
 
-    const props: CreateItemContainerProps = {
-      canvas_id: "12345",
-      setVisible: jest.fn(),
-      item: "item test"
-    }
-
-    const { getByTestId } = render(
+    const { getByText } = render(
       <MockedProvider mocks={[]} addTypename={false}>
-          <CreateItemContainer {...props} />
+        <ThemeProvider theme={theme}>
+          <LoginContainer />
+        </ThemeProvider>
       </MockedProvider>
-  );
+    );
 
-  const input = getByTestId('input-tag');
+    expect(getByText("Welcome to the Sensedia Architecture Center.")).toBeInTheDocument;
+    expect(
+      getByText("Share and get inspired with use cases already performed by the Sensedia team")
+    ).toBeInTheDocument;
 
-  fireEvent.keyUp(input, { value: "abc", keyCode: 13 });
-
-  fireEvent.click(input);
-
-  fireEvent.blur(input.querySelector('input') || window);
-
-  expect(input).toBeInTheDocument
-  expect(props.setVisible).toBeCalledTimes(2);
-    
   });
 });
