@@ -18,7 +18,7 @@ const styles = makeStyles((theme: Theme) => ({
     flexGrow: 1
   },
   paper: {
-    padding: theme.spacing(1) * 2,
+    padding: theme.spacing() * 2,
     height: "100vh",
     display: "flex",
     alignItems: "center"
@@ -172,6 +172,7 @@ const Login = ({onLogin}: LoginProps) =>  {
                     }}
                   >
                     <TextField
+                      data-testid='email'
                       inputRef={_inputEmail}
                       disabled={showPreloader}
                       error={emailFieldEmpty}
@@ -194,6 +195,7 @@ const Login = ({onLogin}: LoginProps) =>  {
                     />
 
                     <TextField
+                      data-testid='password'
                       disabled={showPreloader}
                       error={passwordFieldEmpty}
                       helperText={
@@ -233,6 +235,7 @@ const Login = ({onLogin}: LoginProps) =>  {
                       <br />
                       <div className={classes.wrapper}>
                         <Button
+                          data-testid='btn-login'
                           onClick={_onLogin}
                           size="large"
                           variant="contained"
