@@ -22,7 +22,7 @@ export default function MyApp(props:any) {
   return (
     <React.Fragment>
       <Head>
-        <title>Architecture Center - Sensedia</title>
+        <title>Architecture Center - Company</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>

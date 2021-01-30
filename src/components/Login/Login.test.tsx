@@ -17,9 +17,9 @@ describe("<Login />", () => {
       </ThemeProvider>
     );
 
-    expect(getByText("Welcome to the Sensedia Architecture Center.")).toBeInTheDocument;
+    expect(getByText("Welcome to the Company Architecture Center.")).toBeInTheDocument;
     expect(
-      getByText("Share and get inspired with use cases already performed by the Sensedia team")
+      getByText("Share and get inspired with use cases already performed by the Company team")
     ).toBeInTheDocument;
 
   });

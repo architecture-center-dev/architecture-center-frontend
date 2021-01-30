@@ -133,7 +133,7 @@ const Login = ({onLogin}: LoginProps) =>  {
                     variant="h4"
                     gutterBottom
                   >
-                    Welcome to the Sensedia Architecture Center.
+                    Welcome to the Company Architecture Center.
                   </Typography>
                   <Typography
                     style={{
@@ -142,7 +142,7 @@ const Login = ({onLogin}: LoginProps) =>  {
                     variant="h5"
                     gutterBottom
                   >
-                    Share and get inspired with use cases already performed by the Sensedia team
+                    Share and get inspired with use cases already performed by the Company team
                   </Typography>
                 </div>
               </Paper>
