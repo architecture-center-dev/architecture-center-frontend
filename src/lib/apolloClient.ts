@@ -19,7 +19,7 @@ import { setContext } from '@apollo/client/link/context';
    return new ApolloClient({
      ssrMode: typeof window === "undefined", // set to true for SSR
      link: authLink.concat(createUploadLink({
-       uri: "http://localhost/graphql",
+       uri: process.env.NEXT_PUBLIC_API_BACKEND,
      }) as any),
      cache: new InMemoryCache(),
    });
