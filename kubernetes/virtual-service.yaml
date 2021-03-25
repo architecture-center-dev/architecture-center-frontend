@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: architecture-center-frontapp
+  namespace: architecture-center-dev
+spec:
+  gateways:
+    - architecture-center-frontapp
+  hosts:
+    - ac.io
+  http:
+  - route:
+    - destination:
+        host: architecture-center-frontapp

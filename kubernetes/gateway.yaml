@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: architecture-center-frontapp
+  namespace: architecture-center-dev
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - ac.io
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
