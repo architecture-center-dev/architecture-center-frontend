@@ -1,20 +1,47 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Architecture center front-end
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Open source tool to be a knowledge base for architectural solutions.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+**Made with**
+* ReactJs
+* NextJs
+* Apollo GrapghQl
+* Material UI
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## How to use
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+#### For development
+
+```sh
+yarn
+
+yarn dev
+```
+
+#### For production
+Buid and run it:
+
+```sh
+yarn build
+yarn start
+```
+
+## Features
+
+* Add new solutions
+* Search of the sollutions
+* Solution details
+* **Architecture Canvas** - Visual tool to give a shared vision of architectural solutions
+
+### Add new solutions
+
+![Search solutions](docs/add-solution.png)
+
+### Search of the soluttions
+
+![Search solutions](docs/search.png)
+
+### Architecture Canvas
+
+![Search solutions](docs/architecture-canvas.png)

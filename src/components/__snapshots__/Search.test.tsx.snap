@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> Component should render correctely 1`] = `
+<div
+  class="makeStyles-root-1"
+  data-testid="search"
+>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-align-content-xs-center MuiGrid-justify-xs-center"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+    >
+      <div
+        class="makeStyles-containerSearchBar-2"
+      >
+        <h3
+          class="MuiTypography-root MuiTypography-h3 MuiTypography-alignCenter"
+        >
+          Architecture Center
+        </h3>
+        <div
+          class="MuiFormControl-root MuiTextField-root makeStyles-searchBar-3 MuiFormControl-fullWidth"
+          data-testid="searchTextField"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused"
+            data-shrink="true"
+            for="outlined-basic"
+            id="outlined-basic-label"
+          >
+            Search by i.e 'kubernetes'
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input"
+              id="outlined-basic"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="PrivateNotchedOutline-root-4 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="PrivateNotchedOutline-legendLabelled-6 PrivateNotchedOutline-legendNotched-7"
+              >
+                <span>
+                  Search by i.e 'kubernetes'
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Search /> When press Enter loadingSolutions is called 1`] = `
+<div
+  class="MuiFormControl-root MuiTextField-root makeStyles-searchBar-10 MuiFormControl-fullWidth"
+  data-testid="searchTextField"
+>
+  <label
+    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-focused Mui-focused"
+    data-shrink="true"
+    for="outlined-basic"
+    id="outlined-basic-label"
+  >
+    Search by i.e 'kubernetes'
+  </label>
+  <div
+    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth Mui-focused Mui-focused MuiInputBase-formControl"
+  >
+    <input
+      aria-invalid="false"
+      class="MuiInputBase-input MuiOutlinedInput-input"
+      id="outlined-basic"
+      type="text"
+      value=""
+    />
+    <fieldset
+      aria-hidden="true"
+      class="PrivateNotchedOutline-root-11 MuiOutlinedInput-notchedOutline"
+    >
+      <legend
+        class="PrivateNotchedOutline-legendLabelled-13 PrivateNotchedOutline-legendNotched-14"
+      >
+        <span>
+          Search by i.e 'kubernetes'
+        </span>
+      </legend>
+    </fieldset>
+  </div>
+</div>
+`;
