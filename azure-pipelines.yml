@@ -16,5 +16,5 @@ steps:
       verbose: true
   - task: Npm@1
     inputs:
-      command: "run test"
+      command: "npm run test"
       verbose: true
