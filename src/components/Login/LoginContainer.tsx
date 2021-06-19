@@ -24,7 +24,7 @@ const FormLoginContainer = () => {
           const { accessToken } = login;
 
           if (accessToken !== null) {
-            localStorage.setItem("token", accessToken);
+            localStorage.setItem("access_token", accessToken);
             router.push('/')
           } else {
             setShowPreloader(false);
