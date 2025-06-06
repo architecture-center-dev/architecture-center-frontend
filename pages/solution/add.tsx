@@ -1,9 +1,9 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
+import Container from '@mui/material/Container';
 import AppBar from '../../src/components/AppBar';
-import { Button, Card, CardContent, Divider, Grid, TextField, Typography } from '@material-ui/core';
+import { Button, Card, CardContent, Divider, Grid, TextField, Typography } from '@mui/material';
 import Breadcrumbs from '../../src/components/Breadcumb';
-import { Check } from '@material-ui/icons';
+import { Check } from '@mui/icons-material';
 
 export default function addSolution() {
 

@@ -1,7 +1,7 @@
 import React, { KeyboardEvent, useEffect, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import { TextField, Typography } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import Grid from '@mui/material/Grid';
+import { TextField, Typography } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
   root: {
