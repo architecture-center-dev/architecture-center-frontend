@@ -1,7 +1,7 @@
 import * as React from "react";
 import Login, { LoginProps } from "./index";
 import { fireEvent, render } from '@testing-library/react'
-import { ThemeProvider } from "@material-ui/core";
+import { ThemeProvider } from "@mui/material/styles";
 import theme from '../../theme';
 
 describe("<Login />", () => {

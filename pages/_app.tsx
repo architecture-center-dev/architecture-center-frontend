@@ -1,39 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../src/theme';
+import createEmotionCache from '../src/createEmotionCache';
 import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "../src/lib/apolloClient";
 
-export default function MyApp(props:any) {
-  const { Component, pageProps } = props;
+const clientSideEmotionCache = createEmotionCache();
+
+export interface MyAppProps {
+  Component: any;
+  emotionCache?: EmotionCache;
+  pageProps: any;
+}
+
+export default function MyApp(props: MyAppProps) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const apolloClient = useApollo(pageProps.initialApolloState);
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-      (jssStyles as any).parentElement.removeChild(jssStyles);
+    if (jssStyles && jssStyles.parentElement) {
+      jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
 
   return (
-    <React.Fragment>
+    <CacheProvider value={emotionCache}>
       <Head>
         <title>Architecture Center - Company</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <ApolloProvider client={apolloClient}>
-            <Component {...pageProps} />
+          <Component {...pageProps} />
         </ApolloProvider>
-        
       </ThemeProvider>
-    </React.Fragment>
+    </CacheProvider>
   );
 }
 
