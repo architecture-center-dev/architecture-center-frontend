@@ -1,7 +1,7 @@
 import React, { KeyboardEvent, useEffect, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import { TextField, Typography } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import Grid from '@mui/material/Grid';
+import { TextField, Typography } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -43,7 +43,7 @@ export default function Search({ loadingSolutions }: SearchProps) {
 
   return (
     <div className={classes.root} data-testid="search">
-      <Grid container spacing={3} alignContent={'center'} justify={'center'}>
+      <Grid container spacing={3} alignContent={'center'} justifyContent={'center'}>
         <Grid item lg={4} xl={4} md={6} xs={12} >
 
           <div className={classes.containerSearchBar}>
