@@ -113,7 +113,7 @@ const Login = ({onLogin}: LoginProps) =>  {
           <Grid
             container
             direction="row"
-            justify="flex-start"
+            justifyContent="flex-start"
           >
             <Grid item xs={12} sm={12} md={7} lg={8} xl={9}>
               <Paper

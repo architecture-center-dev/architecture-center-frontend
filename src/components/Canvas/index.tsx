@@ -110,7 +110,7 @@ const canvas = ({ canvas }: { canvas: CanvasProp }) => {
 
   return (
     <>
-      <Grid container spacing={2} justify="center">
+      <Grid container spacing={2} justifyContent="center">
         <Grid item lg={2} className={classes.column}>
           <Paper elevation={0} className={classes.fullRetangle}>
             <Segment
@@ -171,7 +171,7 @@ const canvas = ({ canvas }: { canvas: CanvasProp }) => {
           </Paper>
         </Grid>
       </Grid>
-      <Grid container spacing={2} justify="center">
+      <Grid container spacing={2} justifyContent="center">
         <Grid item lg={5}>
           <Paper elevation={0} className={classes.mainDificulties}>
             <Segment

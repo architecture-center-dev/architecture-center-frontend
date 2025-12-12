@@ -43,7 +43,7 @@ export default function Search({ loadingSolutions }: SearchProps) {
 
   return (
     <div className={classes.root} data-testid="search">
-      <Grid container spacing={3} alignContent={'center'} justify={'center'}>
+      <Grid container spacing={3} alignContent={'center'} justifyContent={'center'}>
         <Grid item lg={4} xl={4} md={6} xs={12} >
 
           <div className={classes.containerSearchBar}>

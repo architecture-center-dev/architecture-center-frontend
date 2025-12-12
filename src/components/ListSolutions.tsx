@@ -26,7 +26,7 @@ export default function ListSolutions({ solutions }: ListSolutionsProps) {
 
   return (
     <div className={classes.root} data-testid="list-solutions">
-      <Grid container spacing={3} justify="center">
+      <Grid container spacing={3} justifyContent="center">
         {
           solutions.map(
             ({ solution_id, name, description, year_month, big_picture }: Solution) =>

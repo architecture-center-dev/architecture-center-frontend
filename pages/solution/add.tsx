@@ -14,7 +14,7 @@ export default function addSolution() {
         <br/>
         <Breadcrumbs />
         <br/>
-        <Grid container spacing={3} justify="center">
+        <Grid container spacing={3} justifyContent="center">
           <Grid item  lg={4}>
             <Card variant="outlined">
                 <CardContent>
