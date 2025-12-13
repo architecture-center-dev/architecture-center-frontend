@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
+import Container from '@mui/material/Container';
 import AppBar from '../src/components/AppBar';
 import Search from '../src/components/Search';
 import ListSolutions from '../src/components/ListSolutions';

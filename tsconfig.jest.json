@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "jsx": "react",
-    "isolatedModules": false,
+    "jsx": "react-jsx",
+    "isolatedModules": false
   }
 }

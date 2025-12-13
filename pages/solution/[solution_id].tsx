@@ -1,8 +1,8 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
+import Container from '@mui/material/Container';
 import AppBar from '../../src/components/AppBar';
 import { useRouter } from 'next/router'
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import Breadcrumbs from '../../src/components/Breadcumb';
 import SolutionDetails from '../../src/components/solution/SolutionDetails';
 import MainTabs from '../../src/components/solution/MainTabs';

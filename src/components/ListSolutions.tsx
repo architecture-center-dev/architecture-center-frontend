@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@mui/styles';
+import Grid from '@mui/material/Grid';
 import Solution from './Solution';
 
 const useStyles = makeStyles(() => ({
@@ -26,7 +26,7 @@ export default function ListSolutions({ solutions }: ListSolutionsProps) {
 
   return (
     <div className={classes.root} data-testid="list-solutions">
-      <Grid container spacing={3} justify="center">
+      <Grid container spacing={3} justifyContent="center">
         {
           solutions.map(
             ({ solution_id, name, description, year_month, big_picture }: Solution) =>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import LoginContainer from "./LoginContainer";
 import { MockedProvider } from "@apollo/client/testing";
-import { ThemeProvider } from "@material-ui/core";
+import { ThemeProvider } from "@mui/material/styles";
 import theme from '../../theme';
 import { render } from "@testing-library/react";
 

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
-import purple from '@material-ui/core/colors/purple';
-import CreateItemContainer from "./CreateItemContainer"
-import AddIcon from '@material-ui/icons/Add';
+import { Button, Grid, Paper, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import purple from '@mui/material/colors/purple';
+import CreateItemContainer from "./CreateItemContainer";
+import AddIcon from '@mui/icons-material/Add';
 
 const useStyles = makeStyles(() => ({
   column: {
@@ -109,7 +110,7 @@ const canvas = ({ canvas }: { canvas: CanvasProp }) => {
 
   return (
     <>
-      <Grid container spacing={2} justify="center">
+      <Grid container spacing={2} justifyContent="center">
         <Grid item lg={2} className={classes.column}>
           <Paper elevation={0} className={classes.fullRetangle}>
             <Segment
@@ -170,7 +171,7 @@ const canvas = ({ canvas }: { canvas: CanvasProp }) => {
           </Paper>
         </Grid>
       </Grid>
-      <Grid container spacing={2} justify="center">
+      <Grid container spacing={2} justifyContent="center">
         <Grid item lg={5}>
           <Paper elevation={0} className={classes.mainDificulties}>
             <Segment
